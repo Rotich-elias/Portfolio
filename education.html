@@ -6,6 +6,66 @@
     <title>Education - CV Rotich Kipkosgei Elius</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .edu-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .edu-card h3 {
+            margin: 0;
+            color: #0d47a1;
+        }
+
+        .edu-card p {
+            margin: 0.5rem 0;
+            color: #555;
+        }
+
+        .referees {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f5f5f5;
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .animate-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .page-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .page-nav a {
+            text-decoration: none;
+            color: #0d47a1;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .page-nav a:hover {
+            color: #094084;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -42,18 +102,32 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <script type="text/babel">
-        const cvMarkdown = `## <i class="fas fa-graduation-cap"></i> EDUCATION
+        const cvMarkdown = `
+<section class="edu-card">
+<h3><i class="fas fa-graduation-cap"></i> Bachelor of Cyber Security</h3>
+<p><strong>Mount Kenya University | Jan 2024 – Present</strong></p>
+<p>Currently pursuing a degree in Cyber Security, focusing on network security, ethical hacking, and IT governance.</p>
+</section>
 
-### Diploma in Information Communication Technology
-*Rift Valley Technical Training Institute | Graduated 2020*
+<section class="edu-card">
+<h3>Diploma in Information Communication Technology</h3>
+<p><strong>Rift Valley Technical Training Institute | Graduated 2020</strong></p>
+<p>Acquired practical knowledge in ICT, systems administration, and basic networking.</p>
+</section>
 
-### KCSE – Yemit Boys High School | 2016
+<section class="edu-card">
+<h3>KCSE – Yemit Boys High School | 2016</h3>
+</section>
 
-### KCPE – Kapalwat Primary School | 2012
+<section class="edu-card">
+<h3>KCPE – Kapalwat Primary School | 2012</h3>
+</section>
 
-## <i class="fas fa-users"></i> REFEREES
-
-Available upon request.`;
+<section class="referees">
+<h3><i class="fas fa-users"></i> Referees</h3>
+<p>Available upon request.</p>
+</section>
+`;
 
         function CV() {
             const html = marked.parse(cvMarkdown);
@@ -62,20 +136,16 @@ Available upon request.`;
             });
         }
 
-        ReactDOM.render(React.createElement(CV), document.getElementById('root'));
+        ReactDOM.render(<CV />, document.getElementById('root'));
 
-        // Add page nav
+        // Add page navigation
         const pageNav = document.createElement('div');
         pageNav.className = 'page-nav';
-        pageNav.innerHTML = '<a href="projects.html">Previous: Projects</a>';
+        pageNav.innerHTML = '<a href="projects.html">&larr; Previous: Projects</a>';
         document.querySelector('main').appendChild(pageNav);
 
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Scroll animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -85,9 +155,7 @@ Available upon request.`;
         }, observerOptions);
 
         // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+        document.querySelectorAll('section, .referees').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
