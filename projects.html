@@ -7,99 +7,159 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f9f9f9;
-            color: #333;
+        .projects-intro {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        header, footer {
-            background: #0d47a1;
-            color: #fff;
+        .projects-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .header-content, .footer {
-            max-width: 1000px;
-            margin: auto;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1rem;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
+        .projects-intro p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .project-card {
             background: #fff;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9ecef;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
-        .project-card img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
-
-       .project-images {
+        .project-header {
             display: flex;
-            overflow-x: auto; /* Enable horizontal scrolling */
-            scroll-snap-type: x mandatory; /* Enable scroll snapping */
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-icon {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .project-meta h4 {
+            color: #2c3e50;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        .project-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-images {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
             gap: 1rem;
             margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: #3498db #f1f1f1;
         }
 
+        .project-images::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .project-images::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .project-images::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 4px;
+        }
 
         .project-images img {
             flex-shrink: 0;
-            width: 300px;
-            height: 200px;
+            width: 280px;
+            height: 180px;
             object-fit: cover;
             border-radius: 8px;
             cursor: pointer;
+            transition: transform 0.2s;
         }
 
-        h2, h4 {
-            color: #0d47a1;
+        .project-images img:hover {
+            transform: scale(1.05);
         }
 
         .page-nav {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: space-between;
+            margin-top: 3rem;
+            text-align: center;
         }
 
-        section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-in-out;
+        .page-nav a {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
-        .animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        footer .social-links a {
-            color: #fff;
-            margin-right: 1rem;
-            font-size: 1.2rem;
+        .page-nav a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
 
         /* Modal styles */
@@ -150,16 +210,45 @@
             color: #ccc;
         }
 
-        .project-images img {
-            cursor: pointer;
-            transition: transform 0.2s;
+        .animate-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
 
-        .project-images img:hover {
-            transform: scale(1.05);
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-in-out;
         }
 
         @media (max-width: 768px) {
+            .projects-intro {
+                padding: 1.5rem 1rem;
+            }
+
+            .projects-intro h2 {
+                font-size: 2rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+            }
+
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .project-icon {
+                margin-bottom: 1rem;
+                align-self: center;
+            }
+
+            .project-images img {
+                width: 250px;
+                height: 160px;
+            }
+
             .modal-content {
                 max-width: 95%;
                 max-height: 95%;
@@ -287,9 +376,16 @@
 
             return (
                 <section className="project-card">
-                    <h4>{project.title}</h4>
-                    {project.link && <p><strong>Link:</strong> <a href={project.link} target="_blank">{project.link}</a></p>}
-                    <p>{project.description}</p>
+                    <div className="project-header">
+                        <div className="project-icon">
+                            <i className="fas fa-project-diagram"></i>
+                        </div>
+                        <div className="project-meta">
+                            <h4>{project.title}</h4>
+                            {project.link && <a href={project.link} target="_blank" className="project-link">{project.link}</a>}
+                        </div>
+                    </div>
+                    <p className="project-description">{project.description}</p>
                     <div className="project-images">
                         {project.images.map((img, i) => (
                             <img
@@ -313,10 +409,19 @@
             );
         }
 
+        function ProjectsIntro() {
+            return (
+                <div className="projects-intro">
+                    <h2><i className="fas fa-code"></i> My Projects</h2>
+                    <p>Explore my portfolio of web applications, mobile apps, and DevOps solutions built with modern technologies</p>
+                </div>
+            );
+        }
+
         function Projects() {
             return (
                 <div>
-                    <h2><i className="fas fa-project-diagram"></i> Projects</h2>
+                    <ProjectsIntro />
                     {projects.map((p, idx) => <ProjectCard key={idx} project={p} />)}
                 </div>
             );
