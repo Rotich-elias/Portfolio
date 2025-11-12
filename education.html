@@ -8,62 +8,163 @@
     <link rel="stylesheet" href="style.css">
     <style>
         main {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 1000px;
+        }
+
+        .education-intro {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .education-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .education-intro p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .education-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3498db, #1abc9c);
         }
 
         .edu-card {
             background: #fff;
-            padding: 1.5rem;
+            margin: 2rem 0;
+            padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+            position: relative;
+            margin-left: 80px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease-in-out;
         }
 
+        .edu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .edu-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .edu-icon {
+            background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            position: absolute;
+            left: -65px;
+            top: 20px;
+        }
+
         .edu-card h3 {
             margin: 0;
-            color: #0d47a1;
+            color: #2c3e50;
+            font-size: 1.4rem;
         }
 
         .edu-card p {
             margin: 0.5rem 0;
             color: #555;
+            line-height: 1.6;
+        }
+
+        .edu-card .institution {
+            font-weight: 600;
+            color: #16a085;
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-card .date {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.9rem;
         }
 
         .referees {
-            margin-top: 2rem;
-            padding: 1rem;
-            background: #f5f5f5;
-            border-radius: 10px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-in-out;
+            margin-left: 80px;
+            margin-top: 3rem;
         }
 
         .animate-in {
             opacity: 1 !important;
             transform: translateY(0) !important;
         }
-
+        
         .page-nav {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: flex-start;
+            margin-top: 3rem;
+            text-align: center;
         }
 
         .page-nav a {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
             text-decoration: none;
-            color: #0d47a1;
-            font-weight: bold;
-            transition: color 0.3s;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .page-nav a:hover {
-            color: #094084;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .education-intro {
+                padding: 1.5rem 1rem;
+            }
+            .education-intro h2 {
+                font-size: 2rem;
+            }
+            .education-timeline::before {
+                left: 20px;
+            }
+            .edu-card, .referees {
+                margin-left: 60px;
+            }
+            .edu-icon {
+                left: -55px;
+            }
         }
     </style>
 </head>
@@ -102,38 +203,68 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <script type="text/babel">
-        const cvMarkdown = `
-<section class="edu-card">
-<h3><i class="fas fa-graduation-cap"></i> Bachelor of Cyber Security</h3>
-<p><strong>Mount Kenya University | Jan 2024 – Present</strong></p>
-<p>Currently pursuing a degree in Cyber Security, focusing on network security, ethical hacking, and IT governance.</p>
-</section>
+        const educationData = [
+            {
+                degree: "Bachelor of Cyber Security",
+                institution: "Mount Kenya University",
+                date: "Jan 2024 – Present",
+                description: "Currently pursuing a degree in Cyber Security, focusing on network security, ethical hacking, and IT governance."
+            },
+            {
+                degree: "Diploma in Information Communication Technology",
+                institution: "Rift Valley Technical Training Institute",
+                date: "Graduated 2020",
+                description: "Acquired practical knowledge in ICT, systems administration, and basic networking."
+            },
+            {
+                degree: "KCSE",
+                institution: "Yemit Boys High School",
+                date: "2016",
+                description: ""
+            },
+            {
+                degree: "KCPE",
+                institution: "Kapalwat Primary School",
+                date: "2012",
+                description: ""
+            }
+        ];
 
-<section class="edu-card">
-<h3>Diploma in Information Communication Technology</h3>
-<p><strong>Rift Valley Technical Training Institute | Graduated 2020</strong></p>
-<p>Acquired practical knowledge in ICT, systems administration, and basic networking.</p>
-</section>
+        function EducationIntro() {
+            return (
+                <div className="education-intro">
+                    <h2><i className="fas fa-university"></i> Education & Learning</h2>
+                    <p>My academic background and commitment to continuous learning in the tech field.</p>
+                </div>
+            );
+        }
 
-<section class="edu-card">
-<h3>KCSE – Yemit Boys High School | 2016</h3>
-</section>
-
-<section class="edu-card">
-<h3>KCPE – Kapalwat Primary School | 2012</h3>
-</section>
-
-<section class="referees">
-<h3><i class="fas fa-users"></i> Referees</h3>
-<p>Available upon request.</p>
-</section>
-`;
+        function EducationCard({ item }) {
+            return (
+                <section className="edu-card">
+                    <div className="edu-icon"><i className="fas fa-graduation-cap"></i></div>
+                    <h3>{item.degree}</h3>
+                    <p className="institution">{item.institution}</p>
+                    <p className="date">{item.date}</p>
+                    {item.description && <p>{item.description}</p>}
+                </section>
+            );
+        }
 
         function CV() {
-            const html = marked.parse(cvMarkdown);
-            return React.createElement('div', {
-                dangerouslySetInnerHTML: { __html: html }
-            });
+            return (
+                <div>
+                    <EducationIntro />
+                    <div className="education-timeline">
+                        {educationData.map((item, index) => <EducationCard key={index} item={item} />)}
+                        <section className="edu-card referees">
+                            <div className="edu-icon"><i className="fas fa-users"></i></div>
+                            <h3>Referees</h3>
+                            <p>Available upon request.</p>
+                        </section>
+                    </div>
+                </div>
+            );
         }
 
         ReactDOM.render(<CV />, document.getElementById('root'));
@@ -141,7 +272,7 @@
         // Add page navigation
         const pageNav = document.createElement('div');
         pageNav.className = 'page-nav';
-        pageNav.innerHTML = '<a href="projects.html">&larr; Previous: Projects</a>';
+        pageNav.innerHTML = '<a href="projects.html">&larr; Previous: Projects</a> ';
         document.querySelector('main').appendChild(pageNav);
 
         // Scroll animations
@@ -155,7 +286,7 @@
         }, observerOptions);
 
         // Observe all sections
-        document.querySelectorAll('section, .referees').forEach(el => observer.observe(el));
+        document.querySelectorAll('.edu-card').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
