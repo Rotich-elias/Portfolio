@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - CV Rotich Kipkosgei Elius</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f9f9f9;
+            color: #333;
+        }
+
+        .page-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease-in-out;
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            margin-bottom: 2rem;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h2 {
+            margin-top: 1.5rem;
+            color: #0d47a1;
+        }
+
+        ul {
+            list-style: disc inside;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>Rotich Kipkosgei Elius</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="education.html">Education</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="root"></main>
+
+    <footer>
+        <div class="social-links">
+            <a href="mailto:elgeiy8@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/rotichelius-elgeiy-96b9631b5" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="tel:+254721237811" title="Phone"><i class="fas fa-phone"></i></a>
+        </div>
+        <p>&copy; 2025 Rotich Kipkosgei Elius. All rights reserved.</p>
+    </footer>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script type="text/babel">
+        const cvMarkdown = `
+<section>
+## <i class="fas fa-tools"></i> CORE SKILLS
+
+* **DevOps & Cloud:** Linux Server Administration (Ubuntu), CI/CD (Jenkins, GitHub Actions), Docker, Kubernetes (K8s), AWS (EC2, S3, IAM basics), Infrastructure as Code (Terraform - learning)
+* **Automation & Scripting:** Bash, Python, PowerShell
+* **Networking & Security:** Network Configuration, Firewalls, Cybersecurity Protocols, VPN setup
+* **Software Development:** HTML, PHP, Java, Python, JavaScript
+* **Tools & Platforms:** Git/GitHub, Ansible, Netplan/Networking, VS Code, MySQL/PostgreSQL
+</section>
+
+<section>
+## <i class="fas fa-certificate"></i> CERTIFICATIONS
+
+* **SoloLearn:** JavaScript, Python, PHP, Java
+* **Digital Citizenship & Online Safety** - Training Certificate
+* **ESRI Certificate in ArcGIS Survey**
+* **Basic First Aid & Basic Electrical Installation**
+</section>`;
+
+        function CV() {
+            const html = marked.parse(cvMarkdown);
+            return React.createElement('div', {
+                dangerouslySetInnerHTML: { __html: html }
+            });
+        }
+
+        ReactDOM.render(React.createElement(CV), document.getElementById('root'));
+
+        // Add page navigation
+        const pageNav = document.createElement('div');
+        pageNav.className = 'page-nav';
+        pageNav.innerHTML = '<a href="index.html">&larr; Previous: Home</a> <a href="experience.html">Next: Experience &rarr;</a>';
+        document.querySelector('main').appendChild(pageNav);
+
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Rotich Kipkosgei Elius</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,14 +22,14 @@
             background-color: #f8f9fa;
         }
         header {
-            background-color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         .header-content {
             max-width: 1200px;
@@ -48,10 +53,11 @@
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
         nav ul li a:hover {
-            color: #3498db;
+            color: #ffd700;
+            transform: scale(1.1);
         }
         main {
             margin-top: 80px;
@@ -64,8 +70,22 @@
             background: white;
             margin-bottom: 40px;
             padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        section.animate-in {
+            opacity: 1;
+            transform: translateY(0);
         }
         section h2 {
             color: #2c3e50;
@@ -104,6 +124,34 @@
             border-left: 4px solid #3498db;
             background-color: #f8f9fa;
         }
+        .project-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .project-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        .project-card p {
+            margin-bottom: 10px;
+        }
+        .project-card a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .project-card a:hover {
+            text-decoration: underline;
+        }
         .experience-item {
             margin-bottom: 30px;
         }
@@ -118,11 +166,24 @@
             margin-bottom: 10px;
         }
         footer {
-            background-color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
             padding: 20px;
             margin-top: 40px;
+        }
+        .social-links {
+            margin-bottom: 10px;
+        }
+        .social-links a {
+            color: white;
+            margin: 0 15px;
+            font-size: 1.5em;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-links a:hover {
+            color: #ffd700;
+            transform: scale(1.2);
         }
         @media (max-width: 768px) {
             .header-content {
@@ -139,6 +200,26 @@
             section {
                 padding: 20px;
             }
+            .project-card {
+                padding: 15px;
+            }
+            .social-links a {
+                margin: 0 10px;
+                font-size: 1.3em;
+            }
+        }
+        @media (max-width: 480px) {
+            nav ul li {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            section {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            .project-card {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -150,11 +231,11 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#summary">Summary</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#education">Education</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="education.html">Education</a></li>
                 </ul>
             </nav>
         </div>
@@ -163,6 +244,11 @@
     <main id="root"></main>
 
     <footer>
+        <div class="social-links">
+            <a href="mailto:elgeiy8@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/rotichelius-elgeiy-96b9631b5" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="tel:+254721237811" title="Phone"><i class="fas fa-phone"></i></a>
+        </div>
         <p>&copy; 2025 Rotich Kipkosgei Elius. All rights reserved.</p>
     </footer>
 
@@ -176,11 +262,13 @@
 
 **+254 721 237811 | [elgeiy8@gmail.com](mailto:elgeiy8@gmail.com) | [LinkedIn](https://www.linkedin.com/in/rotichelius-elgeiy-96b9631b5)**
 
-## PROFESSIONAL SUMMARY {#summary}
+## <i class="fas fa-user"></i> PROFESSIONAL SUMMARY
 
 Proactive DevOps & ICT Specialist with experience in systems administration, IT support, and software development. Skilled in cloud technologies, automation, containerization, CI/CD pipelines, and network security. Strong background in government and private sector ICT operations, with a proven ability to bridge software development and IT operations. Passionate about optimizing system reliability, scalability, and performance through DevOps best practices.
 
-## CORE SKILLS {#skills}
+Proactive DevOps & ICT Specialist with experience in systems administration, IT support, and software development. Skilled in cloud technologies, automation, containerization, CI/CD pipelines, and network security. Strong background in government and private sector ICT operations, with a proven ability to bridge software development and IT operations. Passionate about optimizing system reliability, scalability, and performance through DevOps best practices.
+
+## <i class="fas fa-tools"></i> CORE SKILLS {#skills}
 
 *   **DevOps & Cloud:** Linux Server Administration (Ubuntu), CI/CD (Jenkins, GitHub Actions), Docker, Kubernetes (K8s), AWS (EC2, S3, IAM basics), Infrastructure as Code (Terraform - learning).
 *   **Automation & Scripting:** Bash, Python, PowerShell.
@@ -188,7 +276,7 @@ Proactive DevOps & ICT Specialist with experience in systems administration, IT 
 *   **Software Development:** HTML, PHP, Java, Python, JavaScript.
 *   **Tools & Platforms:** Git/GitHub, Ansible, Netplan/Networking, VS Code, MySQL/PostgreSQL.
 
-## PROFESSIONAL EXPERIENCE {#experience}
+## <i class="fas fa-briefcase"></i> PROFESSIONAL EXPERIENCE {#experience}
 
 ### Freelance ICT / DevOps Engineer
 *(April 2025 – Present)*
@@ -221,38 +309,50 @@ Proactive DevOps & ICT Specialist with experience in systems administration, IT 
 *   Integrated CI/CD workflows for faster deployment of projects.
 *   Worked on back-end optimization and database management.
 
-## PROJECTS {#projects}
+## <i class="fas fa-project-diagram"></i> PROJECTS {#projects}
 
 Here are some of the projects I've worked on.
 
-### 1. Techlup
-*   **Link:** [https://techlup.co.ke](https://techlup.co.ke)
-*   **Description:** (Add a detailed description of the project here. What was its purpose? What was your role? What technologies did you use?)
-*   **Media:**
-    *   (Add screenshots, GIFs, or short videos here to showcase the project.)
-    *   Example: \`!Techlup Screenshot\`
+<div class="project-card">
+<h4>1. Techlup</h4>
+<p><strong>Link:</strong> <a href="https://techlup.co.ke">https://techlup.co.ke</a></p>
+<p><strong>Description:</strong> (Add a detailed description of the project here. What was its purpose? What was your role? What technologies did you use?)</p>
+<p><strong>Media:</strong></p>
+<ul>
+<li>(Add screenshots, GIFs, or short videos here to showcase the project.)</li>
+<li>Example: !Techlup Screenshot</li>
+</ul>
+</div>
 
-### 2. Thelinks
-*   **Link:** https://thelinks.co.ke/
-*   **Description:** (Add a detailed description of the project here. What problem does it solve? What was your contribution?)
-*   **Media:**
-    *   (Add screenshots, GIFs, or short videos here to showcase the project.)
-    *   Example: \`!Thelinks Screenshot\`
+<div class="project-card">
+<h4>2. Thelinks</h4>
+<p><strong>Link:</strong> <a href="https://thelinks.co.ke/">https://thelinks.co.ke/</a></p>
+<p><strong>Description:</strong> (Add a detailed description of the project here. What problem does it solve? What was your contribution?)</p>
+<p><strong>Media:</strong></p>
+<ul>
+<li>(Add screenshots, GIFs, or short videos here to showcase the project.)</li>
+<li>Example: !Thelinks Screenshot</li>
+</ul>
+</div>
 
-### 3. Personal DevOps Lab
-*   **Description:** Set up a complete CI/CD pipeline on a personal Ubuntu Server to automate application builds and deployments. This project demonstrates hands-on experience with Jenkins, Docker, and automation scripting.
-*   **Media:**
-    *   (You can add architecture diagrams, screenshots of Jenkins jobs, or code snippets here.)
-    *   Example: \`!DevOps Lab Diagram\`
+<div class="project-card">
+<h4>3. Personal DevOps Lab</h4>
+<p><strong>Description:</strong> Set up a complete CI/CD pipeline on a personal Ubuntu Server to automate application builds and deployments. This project demonstrates hands-on experience with Jenkins, Docker, and automation scripting.</p>
+<p><strong>Media:</strong></p>
+<ul>
+<li>(You can add architecture diagrams, screenshots of Jenkins jobs, or code snippets here.)</li>
+<li>Example: !DevOps Lab Diagram</li>
+</ul>
+</div>
 
-## CERTIFICATIONS
+## <i class="fas fa-certificate"></i> CERTIFICATIONS
 
 *   **SoloLearn:** JavaScript, Python, PHP, Java
 *   **Digital Citizenship & Online Safety** - Training Certificate
 *   **ESRI Certificate in ArcGIS Survey**
 *   **Basic First Aid & Basic Electrical Installation**
 
-## EDUCATION {#education}
+## <i class="fas fa-graduation-cap"></i> EDUCATION {#education}
 
 ### Diploma in Information Communication Technology
 *Rift Valley Technical Training Institute | Graduated 2020*
@@ -261,7 +361,7 @@ Here are some of the projects I've worked on.
 
 ### KCPE – Kapalwat Primary School | 2012
 
-## REFEREES
+## <i class="fas fa-users"></i> REFEREES
 
 Available upon request.`;
 
@@ -273,6 +373,31 @@ Available upon request.`;
         }
 
         ReactDOM.render(React.createElement(CV), document.getElementById('root'));
+
+        // Add page nav
+        const pageNav = document.createElement('div');
+        pageNav.className = 'page-nav';
+        pageNav.innerHTML = '<a href="skills.html">Next: Skills</a>';
+        document.querySelector('main').appendChild(pageNav);
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
