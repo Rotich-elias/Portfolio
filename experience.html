@@ -7,6 +7,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
+        .experience-intro {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .experience-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .experience-intro p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         .experience-timeline {
             position: relative;
             max-width: 800px;
@@ -128,6 +151,14 @@
         }
 
         @media (max-width: 768px) {
+            .experience-intro {
+                padding: 1.5rem 1rem;
+            }
+
+            .experience-intro h2 {
+                font-size: 2rem;
+            }
+
             .experience-timeline::before {
                 left: 20px;
             }
@@ -272,10 +303,19 @@
             );
         }
 
+        function ExperienceIntro() {
+            return (
+                <div className="experience-intro">
+                    <h2><i className="fas fa-briefcase"></i> My Experience</h2>
+                    <p>Discover my professional journey and career achievements</p>
+                </div>
+            );
+        }
+
         function Experience() {
             return (
                 <div>
-                    <h2><i className="fas fa-briefcase"></i> PROFESSIONAL EXPERIENCE</h2>
+                    <ExperienceIntro />
                     <div className="experience-timeline">
                         {experiences.map((exp, index) => (
                             <ExperienceCard key={index} exp={exp} index={index} />
