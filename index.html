@@ -6,6 +6,71 @@
     <title>CV - Rotich Kipkosgei Elius</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .nav-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .nav-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .nav-card i {
+            font-size: 2.5rem;
+            color: #0d47a1;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-card h3 {
+            margin: 0.5rem 0;
+        }
+
+        .nav-card p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .nav-card a {
+            text-decoration: none;
+            color: #fff;
+            background: #0d47a1;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-card a:hover {
+            background: #094084;
+        }
+
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-in-out;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -49,105 +114,7 @@
 ## <i class="fas fa-user"></i> PROFESSIONAL SUMMARY
 
 Proactive DevOps & ICT Specialist with experience in systems administration, IT support, and software development. Skilled in cloud technologies, automation, containerization, CI/CD pipelines, and network security. Strong background in government and private sector ICT operations, with a proven ability to bridge software development and IT operations. Passionate about optimizing system reliability, scalability, and performance through DevOps best practices.
-
-Proactive DevOps & ICT Specialist with experience in systems administration, IT support, and software development. Skilled in cloud technologies, automation, containerization, CI/CD pipelines, and network security. Strong background in government and private sector ICT operations, with a proven ability to bridge software development and IT operations. Passionate about optimizing system reliability, scalability, and performance through DevOps best practices.
-
-## <i class="fas fa-tools"></i> CORE SKILLS {#skills}
-
-*   **DevOps & Cloud:** Linux Server Administration (Ubuntu), CI/CD (Jenkins, GitHub Actions), Docker, Kubernetes (K8s), AWS (EC2, S3, IAM basics), Infrastructure as Code (Terraform - learning).
-*   **Automation & Scripting:** Bash, Python, PowerShell.
-*   **Networking & Security:** Network Configuration, Firewalls, Cybersecurity Protocols, VPN setup.
-*   **Software Development:** HTML, PHP, Java, Python, JavaScript.
-*   **Tools & Platforms:** Git/GitHub, Ansible, Netplan/Networking, VS Code, MySQL/PostgreSQL.
-
-## <i class="fas fa-briefcase"></i> PROFESSIONAL EXPERIENCE {#experience}
-
-### Freelance ICT / DevOps Engineer
-*(April 2025 – Present)*
-*   Supporting SMEs and individuals with IT and cloud solutions.
-*   Building and maintaining CI/CD pipelines for small projects.
-*   Deployed applications using Docker & GitHub Actions.
-*   Provided ICT support including server setup, system troubleshooting, and network configuration.
-
-### ICT Technician – User Support | Aventus Technology
-*(March 2024 – April 2025)*
-*   Digital Transformation & IT Support (ERP, CRM, Cloud Tools).
-*   Delivered technical support and maintained IT infrastructure (LAN/WAN, servers, endpoints).
-*   Automated routine troubleshooting tasks, improving issue resolution time by 20%.
-*   Supported user onboarding with cloud-based systems and network configurations.
-
-### ICT Intern | Ministry of Education
-*(Jan 2023 – Feb 2024)*
-*   Implemented basic cybersecurity protocols, reducing vulnerabilities in internal networks.
-*   Assisted in rolling out digital education platforms leveraging cloud-based tools.
-
-### Technician / ICT Consultant | Befran – Grids Solutions
-*(June 2022 – Feb 2023)*
-*   Designed and deployed LAN/WAN solutions for SMEs.
-*   Configured firewalls and VPNs to secure client data and services.
-*   Introduced clients to cloud-hosted platforms for scalability.
-
-### Software Developer | Techlup Solutions
-*(Feb 2019 – Present)*
-*   Co-developed scalable web and mobile applications.
-*   Integrated CI/CD workflows for faster deployment of projects.
-*   Worked on back-end optimization and database management.
-
-## <i class="fas fa-project-diagram"></i> PROJECTS {#projects}
-
-Here are some of the projects I've worked on.
-
-<div class="project-card">
-<h4>1. Techlup</h4>
-<p><strong>Link:</strong> <a href="https://techlup.co.ke">https://techlup.co.ke</a></p>
-<p><strong>Description:</strong> (Add a detailed description of the project here. What was its purpose? What was your role? What technologies did you use?)</p>
-<p><strong>Media:</strong></p>
-<ul>
-<li>(Add screenshots, GIFs, or short videos here to showcase the project.)</li>
-<li>Example: !Techlup Screenshot</li>
-</ul>
-</div>
-
-<div class="project-card">
-<h4>2. Thelinks</h4>
-<p><strong>Link:</strong> <a href="https://thelinks.co.ke/">https://thelinks.co.ke/</a></p>
-<p><strong>Description:</strong> (Add a detailed description of the project here. What problem does it solve? What was your contribution?)</p>
-<p><strong>Media:</strong></p>
-<ul>
-<li>(Add screenshots, GIFs, or short videos here to showcase the project.)</li>
-<li>Example: !Thelinks Screenshot</li>
-</ul>
-</div>
-
-<div class="project-card">
-<h4>3. Personal DevOps Lab</h4>
-<p><strong>Description:</strong> Set up a complete CI/CD pipeline on a personal Ubuntu Server to automate application builds and deployments. This project demonstrates hands-on experience with Jenkins, Docker, and automation scripting.</p>
-<p><strong>Media:</strong></p>
-<ul>
-<li>(You can add architecture diagrams, screenshots of Jenkins jobs, or code snippets here.)</li>
-<li>Example: !DevOps Lab Diagram</li>
-</ul>
-</div>
-
-## <i class="fas fa-certificate"></i> CERTIFICATIONS
-
-*   **SoloLearn:** JavaScript, Python, PHP, Java
-*   **Digital Citizenship & Online Safety** - Training Certificate
-*   **ESRI Certificate in ArcGIS Survey**
-*   **Basic First Aid & Basic Electrical Installation**
-
-## <i class="fas fa-graduation-cap"></i> EDUCATION {#education}
-
-### Diploma in Information Communication Technology
-*Rift Valley Technical Training Institute | Graduated 2020*
-
-### KCSE – Yemit Boys High School | 2016
-
-### KCPE – Kapalwat Primary School | 2012
-
-## <i class="fas fa-users"></i> REFEREES
-
-Available upon request.`;
+`;
 
         function CV() {
             const html = marked.parse(cvMarkdown);
@@ -156,20 +123,41 @@ Available upon request.`;
             });
         }
 
-        ReactDOM.render(React.createElement(CV), document.getElementById('root'));
+        ReactDOM.render(<CV />, document.getElementById('root'));
 
-        // Add page nav
-        const pageNav = document.createElement('div');
-        pageNav.className = 'page-nav';
-        pageNav.innerHTML = '<a href="skills.html">Next: Skills</a>';
-        document.querySelector('main').appendChild(pageNav);
+        // Navigation cards
+        const navCards = document.createElement('div');
+        navCards.className = 'nav-cards';
+        navCards.innerHTML = `
+            <div class="nav-card">
+                <i class="fas fa-tools"></i>
+                <h3>Skills</h3>
+                <p>View my technical skills and certifications</p>
+                <a href="skills.html">Explore Skills</a>
+            </div>
+            <div class="nav-card">
+                <i class="fas fa-briefcase"></i>
+                <h3>Experience</h3>
+                <p>Check out my professional experience</p>
+                <a href="experience.html">View Experience</a>
+            </div>
+            <div class="nav-card">
+                <i class="fas fa-project-diagram"></i>
+                <h3>Projects</h3>
+                <p>Discover my portfolio of projects</p>
+                <a href="projects.html">See Projects</a>
+            </div>
+            <div class="nav-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Education</h3>
+                <p>Learn about my educational background</p>
+                <a href="education.html">Read Education</a>
+            </div>
+        `;
+        document.querySelector('main').appendChild(navCards);
 
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Scroll animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -178,10 +166,8 @@ Available upon request.`;
             });
         }, observerOptions);
 
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+        // Observe sections
+        document.querySelectorAll('section, .nav-card').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>

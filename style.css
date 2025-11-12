@@ -51,7 +51,7 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 main {
-    margin-top: 100px; /* Adjusted to prevent header from covering content */
+    margin-top: 100px; /* Increased to prevent header from covering content on all pages */
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -198,6 +198,53 @@ footer {
 }
 .page-nav a:hover {
     background: #2980b9;
+}
+.nav-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+.nav-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+.nav-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+}
+.nav-card i {
+    font-size: 3em;
+    color: #3498db;
+    margin-bottom: 15px;
+}
+.nav-card h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+}
+.nav-card p {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+.nav-card a {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+}
+.nav-card a:hover {
+    transform: scale(1.05);
 }
 @media (max-width: 768px) {
     .header-content {
