@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Rotich Kipkosgei Elius</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo h1 {
+            font-size: 1.8em;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #3498db;
+        }
+        main {
+            margin-top: 80px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 40px 20px;
+        }
+        section {
+            background: white;
+            margin-bottom: 40px;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        section h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        .contact-info {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .project {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        .experience-item {
+            margin-bottom: 30px;
+        }
+        .experience-item h4 {
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .experience-item .date {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                margin-top: 20px;
+            }
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>Rotich Kipkosgei Elius</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#summary">Summary</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="root"></main>
+
+    <footer>
+        <p>&copy; 2025 Rotich Kipkosgei Elius. All rights reserved.</p>
+    </footer>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script type="text/babel">
+        const cvMarkdown = `# ROTICH KIPKOSGEI ELIUS
+
+**+254 721 237811 | [elgeiy8@gmail.com](mailto:elgeiy8@gmail.com) | [LinkedIn](https://www.linkedin.com/in/rotichelius-elgeiy-96b9631b5)**
+
+## PROFESSIONAL SUMMARY {#summary}
+
+Proactive DevOps & ICT Specialist with experience in systems administration, IT support, and software development. Skilled in cloud technologies, automation, containerization, CI/CD pipelines, and network security. Strong background in government and private sector ICT operations, with a proven ability to bridge software development and IT operations. Passionate about optimizing system reliability, scalability, and performance through DevOps best practices.
+
+## CORE SKILLS {#skills}
+
+*   **DevOps & Cloud:** Linux Server Administration (Ubuntu), CI/CD (Jenkins, GitHub Actions), Docker, Kubernetes (K8s), AWS (EC2, S3, IAM basics), Infrastructure as Code (Terraform - learning).
+*   **Automation & Scripting:** Bash, Python, PowerShell.
+*   **Networking & Security:** Network Configuration, Firewalls, Cybersecurity Protocols, VPN setup.
+*   **Software Development:** HTML, PHP, Java, Python, JavaScript.
+*   **Tools & Platforms:** Git/GitHub, Ansible, Netplan/Networking, VS Code, MySQL/PostgreSQL.
+
+## PROFESSIONAL EXPERIENCE {#experience}
+
+### Freelance ICT / DevOps Engineer
+*(April 2025 – Present)*
+*   Supporting SMEs and individuals with IT and cloud solutions.
+*   Building and maintaining CI/CD pipelines for small projects.
+*   Deployed applications using Docker & GitHub Actions.
+*   Provided ICT support including server setup, system troubleshooting, and network configuration.
+
+### ICT Technician – User Support | Aventus Technology
+*(March 2024 – April 2025)*
+*   Digital Transformation & IT Support (ERP, CRM, Cloud Tools).
+*   Delivered technical support and maintained IT infrastructure (LAN/WAN, servers, endpoints).
+*   Automated routine troubleshooting tasks, improving issue resolution time by 20%.
+*   Supported user onboarding with cloud-based systems and network configurations.
+
+### ICT Intern | Ministry of Education
+*(Jan 2023 – Feb 2024)*
+*   Implemented basic cybersecurity protocols, reducing vulnerabilities in internal networks.
+*   Assisted in rolling out digital education platforms leveraging cloud-based tools.
+
+### Technician / ICT Consultant | Befran – Grids Solutions
+*(June 2022 – Feb 2023)*
+*   Designed and deployed LAN/WAN solutions for SMEs.
+*   Configured firewalls and VPNs to secure client data and services.
+*   Introduced clients to cloud-hosted platforms for scalability.
+
+### Software Developer | Techlup Solutions
+*(Feb 2019 – Present)*
+*   Co-developed scalable web and mobile applications.
+*   Integrated CI/CD workflows for faster deployment of projects.
+*   Worked on back-end optimization and database management.
+
+## PROJECTS {#projects}
+
+Here are some of the projects I've worked on.
+
+### 1. Techlup
+*   **Link:** [https://techlup.co.ke](https://techlup.co.ke)
+*   **Description:** (Add a detailed description of the project here. What was its purpose? What was your role? What technologies did you use?)
+*   **Media:**
+    *   (Add screenshots, GIFs, or short videos here to showcase the project.)
+    *   Example: \`!Techlup Screenshot\`
+
+### 2. Thelinks
+*   **Link:** https://thelinks.co.ke/
+*   **Description:** (Add a detailed description of the project here. What problem does it solve? What was your contribution?)
+*   **Media:**
+    *   (Add screenshots, GIFs, or short videos here to showcase the project.)
+    *   Example: \`!Thelinks Screenshot\`
+
+### 3. Personal DevOps Lab
+*   **Description:** Set up a complete CI/CD pipeline on a personal Ubuntu Server to automate application builds and deployments. This project demonstrates hands-on experience with Jenkins, Docker, and automation scripting.
+*   **Media:**
+    *   (You can add architecture diagrams, screenshots of Jenkins jobs, or code snippets here.)
+    *   Example: \`!DevOps Lab Diagram\`
+
+## CERTIFICATIONS
+
+*   **SoloLearn:** JavaScript, Python, PHP, Java
+*   **Digital Citizenship & Online Safety** - Training Certificate
+*   **ESRI Certificate in ArcGIS Survey**
+*   **Basic First Aid & Basic Electrical Installation**
+
+## EDUCATION {#education}
+
+### Diploma in Information Communication Technology
+*Rift Valley Technical Training Institute | Graduated 2020*
+
+### KCSE – Yemit Boys High School | 2016
+
+### KCPE – Kapalwat Primary School | 2012
+
+## REFEREES
+
+Available upon request.`;
+
+        function CV() {
+            const html = marked.parse(cvMarkdown);
+            return React.createElement('div', {
+                dangerouslySetInnerHTML: { __html: html }
+            });
+        }
+
+        ReactDOM.render(React.createElement(CV), document.getElementById('root'));
+    </script>
+</body>
+</html>
