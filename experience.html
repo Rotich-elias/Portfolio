@@ -6,6 +6,152 @@
     <title>Experience - CV Rotich Kipkosgei Elius</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .experience-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3498db, #667eea);
+        }
+
+        .experience-card {
+            background: #fff;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+            position: relative;
+            margin-left: 80px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .experience-card.current {
+            border-left: 4px solid #27ae60;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+        }
+
+        .experience-card.current::before {
+            content: 'CURRENT';
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #27ae60;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .experience-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .experience-meta h3 {
+            margin: 0 0 0.5rem 0;
+            color: #2c3e50;
+            font-size: 1.3rem;
+        }
+
+        .company {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .period {
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .experience-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .experience-content li {
+            position: relative;
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .experience-content li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .timeline-connector {
+            position: absolute;
+            left: -30px;
+            top: 100%;
+            width: 2px;
+            height: 2rem;
+            background: linear-gradient(to bottom, #3498db, #667eea);
+        }
+
+        @media (max-width: 768px) {
+            .experience-timeline::before {
+                left: 20px;
+            }
+
+            .experience-card {
+                margin-left: 60px;
+                padding: 1rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .experience-icon {
+                margin-bottom: 1rem;
+                align-self: center;
+            }
+
+            .experience-meta h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -42,47 +188,104 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <script type="text/babel">
-        const cvMarkdown = `## <i class="fas fa-briefcase"></i> PROFESSIONAL EXPERIENCE
+        const experiences = [
+            {
+                title: "Freelance ICT / DevOps Engineer",
+                company: "Self-Employed",
+                period: "April 2025 – Present",
+                type: "current",
+                responsibilities: [
+                    "Supporting SMEs and individuals with IT and cloud solutions",
+                    "Building and maintaining CI/CD pipelines for small projects",
+                    "Deployed applications using Docker & GitHub Actions",
+                    "Provided ICT support including server setup, system troubleshooting, and network configuration"
+                ]
+            },
+            {
+                title: "ICT Technician – User Support",
+                company: "Aventus Technology",
+                period: "March 2024 – April 2025",
+                type: "past",
+                responsibilities: [
+                    "Digital Transformation & IT Support (ERP, CRM, Cloud Tools)",
+                    "Delivered technical support and maintained IT infrastructure (LAN/WAN, servers, endpoints)",
+                    "Automated routine troubleshooting tasks, improving issue resolution time by 20%",
+                    "Supported user onboarding with cloud-based systems and network configurations"
+                ]
+            },
+            {
+                title: "ICT Intern",
+                company: "Ministry of Education",
+                period: "Jan 2023 – Feb 2024",
+                type: "past",
+                responsibilities: [
+                    "Implemented basic cybersecurity protocols, reducing vulnerabilities in internal networks",
+                    "Assisted in rolling out digital education platforms leveraging cloud-based tools"
+                ]
+            },
+            {
+                title: "Technician / ICT Consultant",
+                company: "Befran – Grids Solutions",
+                period: "June 2022 – Feb 2023",
+                type: "past",
+                responsibilities: [
+                    "Designed and deployed LAN/WAN solutions for SMEs",
+                    "Configured firewalls and VPNs to secure client data and services",
+                    "Introduced clients to cloud-hosted platforms for scalability"
+                ]
+            },
+            {
+                title: "Software Developer",
+                company: "Techlup Solutions",
+                period: "Feb 2019 – Present",
+                type: "past",
+                responsibilities: [
+                    "Co-developed scalable web and mobile applications",
+                    "Integrated CI/CD workflows for faster deployment of projects",
+                    "Worked on back-end optimization and database management"
+                ]
+            }
+        ];
 
-### Freelance ICT / DevOps Engineer
-*(April 2025 – Present)*
-*   Supporting SMEs and individuals with IT and cloud solutions.
-*   Building and maintaining CI/CD pipelines for small projects.
-*   Deployed applications using Docker & GitHub Actions.
-*   Provided ICT support including server setup, system troubleshooting, and network configuration.
-
-### ICT Technician – User Support | Aventus Technology
-*(March 2024 – April 2025)*
-*   Digital Transformation & IT Support (ERP, CRM, Cloud Tools).
-*   Delivered technical support and maintained IT infrastructure (LAN/WAN, servers, endpoints).
-*   Automated routine troubleshooting tasks, improving issue resolution time by 20%.
-*   Supported user onboarding with cloud-based systems and network configurations.
-
-### ICT Intern | Ministry of Education
-*(Jan 2023 – Feb 2024)*
-*   Implemented basic cybersecurity protocols, reducing vulnerabilities in internal networks.
-*   Assisted in rolling out digital education platforms leveraging cloud-based tools.
-
-### Technician / ICT Consultant | Befran – Grids Solutions
-*(June 2022 – Feb 2023)*
-*   Designed and deployed LAN/WAN solutions for SMEs.
-*   Configured firewalls and VPNs to secure client data and services.
-*   Introduced clients to cloud-hosted platforms for scalability.
-
-### Software Developer | Techlup Solutions
-*(Feb 2019 – Present)*
-*   Co-developed scalable web and mobile applications.
-*   Integrated CI/CD workflows for faster deployment of projects.
-*   Worked on back-end optimization and database management.`;
-
-        function CV() {
-            const html = marked.parse(cvMarkdown);
-            return React.createElement('div', {
-                dangerouslySetInnerHTML: { __html: html }
-            });
+        function ExperienceCard({exp, index}) {
+            return (
+                <div className={`experience-card ${exp.type}`}>
+                    <div className="experience-header">
+                        <div className="experience-icon">
+                            <i className="fas fa-briefcase"></i>
+                        </div>
+                        <div className="experience-meta">
+                            <h3>{exp.title}</h3>
+                            <div className="company">{exp.company}</div>
+                            <div className="period">{exp.period}</div>
+                        </div>
+                    </div>
+                    <div className="experience-content">
+                        <ul>
+                            {exp.responsibilities.map((resp, i) => (
+                                <li key={i}>{resp}</li>
+                            ))}
+                        </ul>
+                    </div>
+                    {index < experiences.length - 1 && <div className="timeline-connector"></div>}
+                </div>
+            );
         }
 
-        ReactDOM.render(React.createElement(CV), document.getElementById('root'));
+        function Experience() {
+            return (
+                <div>
+                    <h2><i className="fas fa-briefcase"></i> PROFESSIONAL EXPERIENCE</h2>
+                    <div className="experience-timeline">
+                        {experiences.map((exp, index) => (
+                            <ExperienceCard key={index} exp={exp} index={index} />
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Experience />, document.getElementById('root'));
 
         // Add page nav
         const pageNav = document.createElement('div');
