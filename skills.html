@@ -44,6 +44,110 @@
             justify-content: space-between;
             margin-top: 2rem;
         }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .skill-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .certifications-section {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .certifications-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .certification-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .certification-item i {
+            color: #3498db;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .certification-item span {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-card {
+                padding: 1.5rem;
+            }
+
+            .skill-tags {
+                gap: 0.4rem;
+            }
+
+            .skill-tag {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.6rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -81,46 +185,93 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <script type="text/babel">
-        const cvMarkdown = `
-<section>
-## <i class="fas fa-tools"></i> CORE SKILLS
+        const skillsData = [
+            {
+                category: "Full Stack Development",
+                icon: "fas fa-code",
+                skills: ["Laravel", "Next.js", "React.js", "Flutter", "REST APIs", "GraphQL", "JWT Auth"]
+            },
+            {
+                category: "DevOps & Cloud",
+                icon: "fas fa-server",
+                skills: ["Linux Server Administration (Ubuntu)", "CI/CD (GitHub Actions, Jenkins)", "Docker", "Kubernetes (K8s)", "AWS (EC2, S3, IAM basics)", "Infrastructure as Code (Terraform - learning)"]
+            },
+            {
+                category: "Automation & Scripting",
+                icon: "fas fa-robot",
+                skills: ["Bash", "Python", "PowerShell"]
+            },
+            {
+                category: "Networking & Security",
+                icon: "fas fa-shield-alt",
+                skills: ["Network Configuration", "Firewalls", "Cybersecurity Protocols", "VPN setup"]
+            },
+            {
+                category: "Software Development",
+                icon: "fas fa-laptop-code",
+                skills: ["HTML", "CSS", "JavaScript", "PHP", "Python", "Java"]
+            },
+            {
+                category: "Tools & Platforms",
+                icon: "fas fa-tools",
+                skills: ["Git / GitHub / GitLab / Bitbucket", "MySQL / PostgreSQL / SQLite", "VS Code / PhpStorm", "Ansible, Netplan", "Postman, Insomnia", "Linux Command Line / Terminal", "Figma, Adobe Photoshop / Illustrator"]
+            }
+        ];
 
-* **Full Stack Development:** Laravel, Next.js, React.js, Flutter, REST APIs, GraphQL, JWT Auth
-* **DevOps & Cloud:** Linux Server Administration (Ubuntu), CI/CD (GitHub Actions, Jenkins), Docker, Kubernetes (K8s), AWS (EC2, S3, IAM basics), Infrastructure as Code (Terraform - learning)
-* **Automation & Scripting:** Bash, Python, PowerShell
-* **Networking & Security:** Network Configuration, Firewalls, Cybersecurity Protocols, VPN setup
-* **Software Development:** HTML, CSS, JavaScript, PHP, Python, Java
-</section>
+        const certifications = [
+            "SoloLearn: JavaScript, Python, PHP, Java",
+            "Digital Citizenship & Online Safety - Training Certificate",
+            "ESRI Certificate in ArcGIS Survey",
+            "Basic First Aid & Basic Electrical Installation"
+        ];
 
-<section>
-## <i class="fas fa-laptop-code"></i> TOOLS & PLATFORMS
-
-* Git / GitHub / GitLab / Bitbucket
-* MySQL / PostgreSQL / SQLite
-* VS Code / PhpStorm
-* Ansible, Netplan
-* Postman, Insomnia
-* Linux Command Line / Terminal
-* Figma, Adobe Photoshop / Illustrator
-</section>
-
-<section>
-## <i class="fas fa-certificate"></i> CERTIFICATIONS
-
-* **SoloLearn:** JavaScript, Python, PHP, Java
-* **Digital Citizenship & Online Safety** - Training Certificate
-* **ESRI Certificate in ArcGIS Survey**
-* **Basic First Aid & Basic Electrical Installation**
-</section>`;
-
-        function CV() {
-            const html = marked.parse(cvMarkdown);
-            return React.createElement('div', {
-                dangerouslySetInnerHTML: { __html: html }
-            });
+        function SkillCard({skill}) {
+            return (
+                <div className="skill-card">
+                    <div className="skill-icon">
+                        <i className={skill.icon}></i>
+                    </div>
+                    <h3>{skill.category}</h3>
+                    <div className="skill-tags">
+                        {skill.skills.map((item, index) => (
+                            <span key={index} className="skill-tag">{item}</span>
+                        ))}
+                    </div>
+                </div>
+            );
         }
 
-        ReactDOM.render(<CV />, document.getElementById('root'));
+        function Certifications() {
+            return (
+                <section className="certifications-section">
+                    <h2><i className="fas fa-certificate"></i> CERTIFICATIONS</h2>
+                    <div className="certifications-list">
+                        {certifications.map((cert, index) => (
+                            <div key={index} className="certification-item">
+                                <i className="fas fa-award"></i>
+                                <span>{cert}</span>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        function Skills() {
+            return (
+                <div>
+                    <h2><i className="fas fa-tools"></i> CORE SKILLS</h2>
+                    <div className="skills-grid">
+                        {skillsData.map((skill, index) => (
+                            <SkillCard key={index} skill={skill} />
+                        ))}
+                    </div>
+                    <Certifications />
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Skills />, document.getElementById('root'));
 
         // Page navigation
         const pageNav = document.createElement('div');
