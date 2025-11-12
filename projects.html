@@ -6,6 +6,85 @@
     <title>Projects - CV Rotich Kipkosgei Elius</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            color: #333;
+        }
+
+        header, footer {
+            background: #0d47a1;
+            color: #fff;
+        }
+
+        .header-content, .footer {
+            max-width: 1000px;
+            margin: auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .project-card {
+            background: #fff;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        h2, h4 {
+            color: #0d47a1;
+        }
+
+        .page-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer .social-links a {
+            color: #fff;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -28,75 +107,73 @@
     <main id="root"></main>
 
     <footer>
-        <div class="social-links">
-            <a href="mailto:elgeiy8@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/rotichelius-elgeiy-96b9631b5" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="tel:+254721237811" title="Phone"><i class="fas fa-phone"></i></a>
+        <div class="footer">
+            <div class="social-links">
+                <a href="mailto:elgeiy8@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/rotichelius-elgeiy-96b9631b5" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="tel:+254721237811" title="Phone"><i class="fas fa-phone"></i></a>
+            </div>
+            <p>&copy; 2025 Rotich Kipkosgei Elius. All rights reserved.</p>
         </div>
-        <p>&copy; 2025 Rotich Kipkosgei Elius. All rights reserved.</p>
     </footer>
 
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <script type="text/babel">
-        const cvMarkdown = `## <i class="fas fa-project-diagram"></i> PROJECTS
+        const projects = [
+            {
+                title: "Techlup",
+                link: "https://techlup.co.ke",
+                description: "A modern loan app with frontend and backend integration using Laravel and Flutter. I developed the entire system, including API, dashboard, and user interface.",
+                images: ["images/techlup-1.png", "images/techlup-2.png"]
+            },
+            {
+                title: "Thelinks",
+                link: "https://thelinks.co.ke/",
+                description: "A company website to showcase services and portfolio. Built using React.js, integrating analytics and SEO optimization.",
+                images: ["images/thelinks-1.png", "images/thelinks-2.png"]
+            },
+            {
+                title: "Personal DevOps Lab",
+                description: "Set up a complete CI/CD pipeline on a personal Ubuntu Server to automate builds and deployments using Jenkins and Docker.",
+                images: ["images/devops-lab.png"]
+            }
+        ];
 
-<div class="project-card">
-<h4>1. Techlup</h4>
-<p><strong>Link:</strong> <a href="https://techlup.co.ke">https://techlup.co.ke</a></p>
-<p><strong>Description:</strong> (Add a detailed description of the project here. What was its purpose? What was your role? What technologies did you use?)</p>
-<p><strong>Media:</strong></p>
-<ul>
-<li>(Add screenshots, GIFs, or short videos here to showcase the project.)</li>
-<li>Example: !Techlup Screenshot</li>
-</ul>
-</div>
-
-<div class="project-card">
-<h4>2. Thelinks</h4>
-<p><strong>Link:</strong> <a href="https://thelinks.co.ke/">https://thelinks.co.ke/</a></p>
-<p><strong>Description:</strong> (Add a detailed description of the project here. What problem does it solve? What was your contribution?)</p>
-<p><strong>Media:</strong></p>
-<ul>
-<li>(Add screenshots, GIFs, or short videos here to showcase the project.)</li>
-<li>Example: !Thelinks Screenshot</li>
-</ul>
-</div>
-
-<div class="project-card">
-<h4>3. Personal DevOps Lab</h4>
-<p><strong>Description:</strong> Set up a complete CI/CD pipeline on a personal Ubuntu Server to automate application builds and deployments. This project demonstrates hands-on experience with Jenkins, Docker, and automation scripting.</p>
-<p><strong>Media:</strong></p>
-<ul>
-<li>(You can add architecture diagrams, screenshots of Jenkins jobs, or code snippets here.)</li>
-<li>Example: !DevOps Lab Diagram</li>
-</ul>
-</div>`;
-
-        function CV() {
-            const html = marked.parse(cvMarkdown);
-            return React.createElement('div', {
-                dangerouslySetInnerHTML: { __html: html }
-            });
+        function ProjectCard({project}) {
+            return (
+                <section className="project-card">
+                    <h4>{project.title}</h4>
+                    {project.link && <p><strong>Link:</strong> <a href={project.link} target="_blank">{project.link}</a></p>}
+                    <p>{project.description}</p>
+                    {project.images.map((img, i) => (
+                        <img key={i} src={img} alt={`${project.title} screenshot ${i+1}`} />
+                    ))}
+                </section>
+            );
         }
 
-        ReactDOM.render(React.createElement(CV), document.getElementById('root'));
+        function Projects() {
+            return (
+                <div>
+                    <h2><i className="fas fa-project-diagram"></i> Projects</h2>
+                    {projects.map((p, idx) => <ProjectCard key={idx} project={p} />)}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Projects />, document.getElementById('root'));
 
         // Add page nav
         const pageNav = document.createElement('div');
         pageNav.className = 'page-nav';
-        pageNav.innerHTML = '<a href="experience.html">Previous: Experience</a> <a href="education.html">Next: Education</a>';
+        pageNav.innerHTML = '<a href="experience.html">&larr; Previous: Experience</a> <a href="education.html">Next: Education &rarr;</a>';
         document.querySelector('main').appendChild(pageNav);
 
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Scroll animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -105,10 +182,7 @@
             });
         }, observerOptions);
 
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+        document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
     </script>
 </body>
 </html>

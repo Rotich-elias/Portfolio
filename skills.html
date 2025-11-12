@@ -7,44 +7,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background: #f9f9f9;
-            color: #333;
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
 
-        .page-nav {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: space-between;
+        section {
+            background: #fff;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-in-out;
         }
 
         .animate-in {
             opacity: 1;
             transform: translateY(0);
-            transition: all 0.6s ease-in-out;
-        }
-
-        section {
-            opacity: 0;
-            transform: translateY(30px);
-            margin-bottom: 2rem;
-        }
-
-        main {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
         }
 
         h2 {
-            margin-top: 1.5rem;
             color: #0d47a1;
+            margin-bottom: 1rem;
         }
 
         ul {
-            list-style: disc inside;
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
         }
     </style>
 </head>
@@ -87,11 +85,23 @@
 <section>
 ## <i class="fas fa-tools"></i> CORE SKILLS
 
-* **DevOps & Cloud:** Linux Server Administration (Ubuntu), CI/CD (Jenkins, GitHub Actions), Docker, Kubernetes (K8s), AWS (EC2, S3, IAM basics), Infrastructure as Code (Terraform - learning)
+* **Full Stack Development:** Laravel, Next.js, React.js, Flutter, REST APIs, GraphQL, JWT Auth
+* **DevOps & Cloud:** Linux Server Administration (Ubuntu), CI/CD (GitHub Actions, Jenkins), Docker, Kubernetes (K8s), AWS (EC2, S3, IAM basics), Infrastructure as Code (Terraform - learning)
 * **Automation & Scripting:** Bash, Python, PowerShell
 * **Networking & Security:** Network Configuration, Firewalls, Cybersecurity Protocols, VPN setup
-* **Software Development:** HTML, PHP, Java, Python, JavaScript
-* **Tools & Platforms:** Git/GitHub, Ansible, Netplan/Networking, VS Code, MySQL/PostgreSQL
+* **Software Development:** HTML, CSS, JavaScript, PHP, Python, Java
+</section>
+
+<section>
+## <i class="fas fa-laptop-code"></i> TOOLS & PLATFORMS
+
+* Git / GitHub / GitLab / Bitbucket
+* MySQL / PostgreSQL / SQLite
+* VS Code / PhpStorm
+* Ansible, Netplan
+* Postman, Insomnia
+* Linux Command Line / Terminal
+* Figma, Adobe Photoshop / Illustrator
 </section>
 
 <section>
@@ -110,31 +120,23 @@
             });
         }
 
-        ReactDOM.render(React.createElement(CV), document.getElementById('root'));
+        ReactDOM.render(<CV />, document.getElementById('root'));
 
-        // Add page navigation
+        // Page navigation
         const pageNav = document.createElement('div');
         pageNav.className = 'page-nav';
         pageNav.innerHTML = '<a href="index.html">&larr; Previous: Home</a> <a href="experience.html">Next: Experience &rarr;</a>';
         document.querySelector('main').appendChild(pageNav);
 
         // Scroll animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('animate-in');
             });
         }, observerOptions);
 
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
     </script>
 </body>
 </html>
