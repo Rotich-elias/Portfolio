@@ -45,6 +45,29 @@
             margin-top: 2rem;
         }
 
+        .skills-intro {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .skills-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .skills-intro p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -131,6 +154,14 @@
         }
 
         @media (max-width: 768px) {
+            .skills-intro {
+                padding: 1.5rem 1rem;
+            }
+
+            .skills-intro h2 {
+                font-size: 2rem;
+            }
+
             .skills-grid {
                 grid-template-columns: 1fr;
             }
@@ -257,10 +288,19 @@
             );
         }
 
+        function SkillsIntro() {
+            return (
+                <div className="skills-intro">
+                    <h2><i className="fas fa-tools"></i> My Skills</h2>
+                    <p>Explore my technical expertise and professional certifications</p>
+                </div>
+            );
+        }
+
         function Skills() {
             return (
                 <div>
-                    <h2><i className="fas fa-tools"></i> CORE SKILLS</h2>
+                    <SkillsIntro />
                     <div className="skills-grid">
                         {skillsData.map((skill, index) => (
                             <SkillCard key={index} skill={skill} />
