@@ -98,7 +98,14 @@
         .project-description {
             color: #555;
             line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-technologies {
+            color: #666;
+            font-size: 0.9rem;
             margin-bottom: 1.5rem;
+            font-weight: 500;
         }
 
         .project-images {
@@ -302,6 +309,7 @@
                 title: "Techlup",
                 link: "https://techlup.co.ke/",
                 description: "A company portfolio website to showcase services and projects. Built using React.js, integrating analytics and SEO optimization.",
+                technologies: "React.js, JavaScript, CSS3, SEO Optimization, Google Analytics",
                 images: [
                     "images/techlup1.png",
                     "images/techlup2.png",
@@ -313,6 +321,7 @@
                 title: "Thelinks",
                 link: "https://thelinks.co.ke/",
                 description: "A company website to showcase services and portfolio. Built using React.js, integrating analytics and SEO optimization.",
+                technologies: "React.js, Vite, Tailwind CSS, SEO, Analytics",
                 images: [
                     "images/links1.png",
                     "images/links2.png"
@@ -321,6 +330,7 @@
             {
                 title: "Personal DevOps Lab",
                 description: "Set up a complete CI/CD pipeline on a personal Ubuntu Server to automate builds and deployments using Jenkins and Docker.",
+                technologies: "Jenkins, Docker, Ubuntu Server, Git, CI/CD Automation",
                 images: [
                     "images/homelab.png",
                     "images/homelab1.png"
@@ -330,6 +340,7 @@
                 title: "Manschoice",
                 link: "https://manschoice.co.ke",
                 description: "A loan giving app with Flutter APK frontend and Laravel API backend. Features include loan application, approval workflow, and payment tracking.",
+                technologies: "Flutter, Laravel, REST API, MySQL, Firebase",
                 images: [
                     "images/man1.png",
                     "images/man2.png",
@@ -342,6 +353,7 @@
                 title: "Ukweli Tally",
                 link: "https://ukwelitally.vercel.app/",
                 description: "A voting tally website built with Next.js for real-time election results. Implemented full-stack features including data validation and secure API endpoints.",
+                technologies: "Next.js, Node.js, MongoDB, Tailwind CSS, Vercel Deployment",
                 images: [
                     "images/tally1.png",
                     "images/tally2.png",
@@ -353,6 +365,7 @@
                 title: "Roomfinder",
                 link: "https://roomfinder.co.ke/",
                 description: "An Airbnb and hotel booking website built using Laravel with front end for users and backend for admin updates and bookings.",
+                technologies: "Laravel, MySQL, Bootstrap, JavaScript, cPanel Hosting",
                 images: [
                     "images/roomfinder.jpeg",
                     "images/roomfinder1.jpeg",
@@ -398,6 +411,7 @@
                         </div>
                     </div>
                     <p className="project-description">{project.description}</p>
+                    <p className="project-technologies"><strong>Technologies:</strong> {project.technologies}</p>
                     <div className="project-images">
                         {project.images.map((img, i) => (
                             <img
